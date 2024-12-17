@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de noms d'animaux</title>
+</head>
+<body>
+<header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="generator-all.html">Générateurs</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+    <style>
+        .anecdote-container {
+            background-color: #2c3e50;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .anecdote-container p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .generate-button {
+            color: aliceblue;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .generate-button:hover {
+            background-color: #6272a4;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: #333;
+            color: #bbb;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        .credits {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+
+    <!-- Main Content -->
+    <main>
+        <div class="anecdote-container">
+            <p id="anecdote-text">Cliquez sur le bouton ci-dessous pour afficher une anecdote aléatoire.</p>
+        </div>
+        <button><a class="generate-button" id="generate-btn">Générer une Anecdote</button>
+    </main>
+    <script>
+        const anecdotes = [
+            "Saviez-vous que les éléphants sont les seuls animaux qui ne peuvent pas sauter ?",
+            "Les requins existent depuis plus longtemps que les arbres !",
+            "L'empreinte de la langue de chaque être humain est unique, tout comme les empreintes digitales.",
+            "Les chats ne peuvent pas goûter le sucre, car ils n'ont pas les récepteurs de goût sucré.",
+            "Il y a plus d'étoiles dans l'univers que de grains de sable sur toutes les plages de la Terre.",
+            "La méduse Turritopsis dohrnii est l'un des rares animaux considérés comme biologiquement immortels.",
+            "En Suisse, il est illégal de posséder un seul cochon d'Inde, car ils sont des animaux sociaux et doivent vivre à plusieurs.",
+            "Le premier email jamais envoyé a été 'QWERTYUIOP'.",
+            "La Lune s'éloigne de la Terre de 3,8 cm chaque année.",
+            "Un poulpe a trois cœurs."
+        ];
+
+        const generateButton = document.getElementById('generate-btn');
+        const anecdoteText = document.getElementById('anecdote-text');
+
+        generateButton.addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * anecdotes.length);
+            anecdoteText.textContent = anecdotes[randomIndex];
+        });
+    </script>
+</body>
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Générateur d'Anecdotes. Tous droits réservés.</p>
+        <p class="credits">Développé par GB-MÉDIA</p>
+    </footer>
+</html>
