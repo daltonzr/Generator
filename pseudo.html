@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Pseufo</title>
+</head>
+<body>
+<header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="generator-all.html">Générateurs</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<main>
+    <section>
+      <div class="container">
+    <h1>Générateur de Pseudo</h1>
+    
+    <button onclick="generatePseudos()">Générer des Pseudos</button>
+    <div class="pseudo-list" id="pseudo-list"></div>
+</div>
+<script>
+    // Listes de préfixes, suffixes et composants du pseudo
+    const prefixes = ['Shadow', 'Dark', 'Light', 'Ghost', 'Lunar', 'Venom', 'Blood', 'Frost', 'Steel', 'Flame', 'Night', 'Grim', 'Dusk', 'Aether', 'Ragnar', 'Drake', 'Nyx', 'Echo', 'Sky', 'Wolf', 'Blaze', 'Iron', 'Myst', 'Void', 'Hell', 'Pyro', 'Shade', 'Sorrow', 'Plague', 'Rage', 'Death'];
+    const suffixes = ['Blade', 'Fang', 'Claw', 'Howl', 'Byte', 'Forge', 'X', 'Zero', 'One', 'Prime', 'Eon', 'Core', 'Strike', 'Bolt', 'Cry', 'Moon', 'Fire', 'Frost', 'Soul', 'Wing', 'King', 'Queen', 'Lord', 'Slayer', 'Reaper', 'Hunter', 'Overlord', 'Knight', 'Seeker', 'Breaker', 'Warden'];
+    const numberSuffixes = Array.from({length: 50}, () => Math.floor(Math.random() * 99) + 1);
+    const symbolSuffixes = ['_', '-', 'x', 'X', ''];
+
+    // Fonction pour générer un pseudo
+    function generatePseudo() {
+        const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+        const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+        const number = Math.random() > 0.7 ? numberSuffixes[Math.floor(Math.random() * numberSuffixes.length)] : '';
+        const symbol = Math.random() > 0.8 ? symbolSuffixes[Math.floor(Math.random() * symbolSuffixes.length)] : '';
+        return `${prefix}${symbol}${suffix}${number}`;
+    }
+
+    // Fonction pour générer plusieurs pseudos et les afficher
+    function generatePseudos() {
+        const pseudoList = document.getElementById('pseudo-list');
+        pseudoList.innerHTML = ''; // Vider la liste avant de regénérer
+        const pseudos = new Set(); // Utilisation d'un set pour éviter les doublons
+
+        while (pseudos.size < 1) { // Générer 20 pseudos uniques
+            pseudos.add(generatePseudo());
+        }
+
+        pseudos.forEach(pseudo => {
+            const pseudoItem = document.createElement('div');
+            pseudoItem.className = 'pseudo-item';
+            pseudoItem.textContent = pseudo;
+            pseudoList.appendChild(pseudoItem);
+        });
+    }
+</script>
+
+</body>
+    <footer>
+    <p>© <span id="year"></span> Generator Factory - Tous droits réservés</p>
+</footer>
+</html>
